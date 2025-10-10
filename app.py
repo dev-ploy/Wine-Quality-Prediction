@@ -2,9 +2,12 @@
 import os
 import numpy as np
 import pandas as pd
-from mlProject.pipeline.prediction import PredictionPipeline
+import joblib
 
 app = Flask(__name__)
+
+# Load the model directly
+model = joblib.load('artifacts/model_trainer/model.pkl')
 
 @app.route('/', methods=['GET'])
 def homePage():
@@ -39,8 +42,8 @@ def index():
                       'pH', 'sulphates', 'alcohol']
             data = pd.DataFrame([data], columns=columns)
 
-            obj = PredictionPipeline()
-            predict = obj.predict(data)
+            # Use the loaded model to make prediction
+            predict = model.predict(data)
             predict = float(predict[0])
             
             return render_template("results.html", prediction=round(predict, 2))
