@@ -1,5 +1,4 @@
 pandas
-notebook
 numpy
 scikit-learn
 matplotlib
@@ -10,5 +9,4 @@ ensure==1.0.2
 joblib
 types-pyYAML
 Flask
-Flask-cors
--e .
+Flask-Cors
