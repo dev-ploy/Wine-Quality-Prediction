@@ -1,3 +1,4 @@
+# Wine Quality Prediction Docker Image
 # Use Python 3.10 slim image
 FROM python:3.10-slim
 
@@ -9,24 +10,20 @@ RUN apt-get update && apt-get install -y \
     gcc \
     g++ \
     python3-dev \
+    git \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy application code
-COPY . .
+# Upgrade pip first
+RUN pip install --no-cache-dir --upgrade pip
 
-# Upgrade pip and install dependencies
-RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir pandas && \
-    pip install --no-cache-dir numpy && \
-    pip install --no-cache-dir scikit-learn && \
-    pip install --no-cache-dir matplotlib && \
-    pip install --no-cache-dir python-box==6.0.2 && \
-    pip install --no-cache-dir pyYAML && \
-    pip install --no-cache-dir tqdm && \
-    pip install --no-cache-dir ensure==1.0.2 && \
-    pip install --no-cache-dir joblib && \
-    pip install --no-cache-dir Flask && \
-    pip install --no-cache-dir Flask-Cors
+# Copy only requirements.txt first (for better caching)
+COPY requirements.txt .
+
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of the application
+COPY . .
 
 # Create necessary directories
 RUN mkdir -p artifacts/data_ingestion \
