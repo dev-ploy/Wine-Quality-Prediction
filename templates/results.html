@@ -1,29 +1,21 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prediction Results - Wine Quality</title>
-    
-    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='assets/favicon.svg') }}">
-    
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="result-container">
         <div class="card">
-            <!-- Success Animation -->
-            <div class="success-animation">✨</div>
+            <div class="success-animation"></div>
             
-            <h1 style="text-align: center; color: var(--primary-color); margin-bottom: 40px;">
+            <h1 style="text-align: center; color: #667eea; margin-bottom: 40px;">
                 Prediction Complete!
             </h1>
 
-            <!-- Result Card -->
             <div class="result-card">
                 <div class="result-label">Predicted Wine Quality Score</div>
                 <div class="result-value" style="font-size: 4em; font-weight: 700; color: #667eea; margin: 20px 0;">
@@ -34,7 +26,7 @@
                 </div>
                 
                 <div class="quality-bar-container">
-                    <div class="quality-bar" style="background: #e0e0e0; height: 30px; border-radius: 15px; overflow: hidden; position: relative;">
+                    <div class="quality-bar" style="background: #e0e0e0; height: 30px; border-radius: 15px; overflow: hidden;">
                         <div class="quality-fill" style="width: {{ (prediction / 10) * 100 }}%; background: linear-gradient(90deg, #667eea, #764ba2); height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; transition: width 1s ease;">
                             {{ prediction }}/10
                         </div>
@@ -44,43 +36,40 @@
                 <div class="rating-stars" style="font-size: 2em; margin: 20px 0;">
                     {% set stars = (prediction / 2) | round | int %}
                     {% for i in range(stars) %}
-                        <span class="star">⭐</span>
+                        <span class="star"></span>
                     {% endfor %}
                 </div>
 
                 <div class="result-description" style="padding: 15px; border-radius: 10px; font-size: 1.3em; font-weight: 600; margin-top: 20px;">
                     {% if prediction >= 7 %}
                         <div style="background: #d4edda; color: #155724; padding: 15px; border-radius: 10px;">
-                            🎉 Excellent Quality Wine!
+                             Excellent Quality Wine!
                         </div>
                     {% elif prediction >= 6 %}
                         <div style="background: #d1ecf1; color: #0c5460; padding: 15px; border-radius: 10px;">
-                            👍 Good Quality Wine
+                             Good Quality Wine
                         </div>
                     {% elif prediction >= 5 %}
                         <div style="background: #fff3cd; color: #856404; padding: 15px; border-radius: 10px;">
-                            👌 Average Quality Wine
+                             Average Quality Wine
                         </div>
                     {% else %}
                         <div style="background: #f8d7da; color: #721c24; padding: 15px; border-radius: 10px;">
-                            ⚠️ Below Average Quality
+                             Below Average Quality
                         </div>
                     {% endif %}
                 </div>
             </div>
 
-            <!-- Action Buttons -->
             <div class="btn-container" style="display: flex; gap: 15px; margin-top: 40px; justify-content: center;">
-                <a href="/" class="btn btn-primary" style="text-decoration: none; text-align: center; padding: 15px 40px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border-radius: 10px; font-weight: 600; font-size: 1.1em; transition: transform 0.2s;">
-                    🔮 Predict Again
+                <a href="/" class="btn btn-primary" style="text-decoration: none; text-align: center; padding: 15px 40px; background: linear-gradient(135deg, #667eea, #764ba2); color: white; border-radius: 10px; font-weight: 600; font-size: 1.1em;">
+                     Predict Again
                 </a>
-                <button onclick="window.print()" class="btn btn-secondary" style="padding: 15px 40px; background: #f5f5f5; color: #666; border: none; border-radius: 10px; font-weight: 600; font-size: 1.1em; cursor: pointer; transition: transform 0.2s;">
-                    🖨️ Print Results
+                <button onclick="window.print()" class="btn btn-secondary" style="padding: 15px 40px; background: #f5f5f5; color: #666; border: none; border-radius: 10px; font-weight: 600; font-size: 1.1em; cursor: pointer;">
+                     Print Results
                 </button>
             </div>
         </div>
     </div>
-
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>
