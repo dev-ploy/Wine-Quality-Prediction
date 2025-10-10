@@ -8,16 +8,19 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y \
     gcc \
     g++ \
+    git \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy requirements first for better caching
+# Copy necessary files for package installation
 COPY requirements.txt .
+COPY setup.py .
+COPY src ./src
 
 # Install Python dependencies
 RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
-# Copy application code
+# Copy rest of application code
 COPY . .
 
 # Create necessary directories
