@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wine Quality Prediction</title>
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='assets/favicon.svg') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-icon">🍷</div>
+            <h1>Wine Quality Predictor</h1>
+            <p class="subtitle">Predict wine quality using machine learning</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="card">
+                <h2 class="card-title">Enter Wine Properties</h2>
+                <p class="card-description">Fill in the wine's chemical properties below to predict its quality (0-10 scale)</p>
+
+                <form action="/predict" method="POST" class="prediction-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fixed_acidity">Fixed Acidity</label>
+                            <input type="number" step="0.1" name="fixed_acidity" id="fixed_acidity" placeholder="7.4" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="volatile_acidity">Volatile Acidity</label>
+                            <input type="number" step="0.01" name="volatile_acidity" id="volatile_acidity" placeholder="0.7" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="citric_acid">Citric Acid</label>
+                            <input type="number" step="0.01" name="citric_acid" id="citric_acid" placeholder="0.0" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="residual_sugar">Residual Sugar</label>
+                            <input type="number" step="0.1" name="residual_sugar" id="residual_sugar" placeholder="1.9" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="chlorides">Chlorides</label>
+                            <input type="number" step="0.001" name="chlorides" id="chlorides" placeholder="0.076" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="free_sulfur_dioxide">Free Sulfur Dioxide</label>
+                            <input type="number" step="0.1" name="free_sulfur_dioxide" id="free_sulfur_dioxide" placeholder="11.0" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="total_sulfur_dioxide">Total Sulfur Dioxide</label>
+                            <input type="number" step="0.1" name="total_sulfur_dioxide" id="total_sulfur_dioxide" placeholder="34.0" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="density">Density</label>
+                            <input type="number" step="0.0001" name="density" id="density" placeholder="0.9978" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="pH">pH</label>
+                            <input type="number" step="0.01" name="pH" id="pH" placeholder="3.51" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="sulphates">Sulphates</label>
+                            <input type="number" step="0.01" name="sulphates" id="sulphates" placeholder="0.56" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="alcohol">Alcohol (%)</label>
+                            <input type="number" step="0.1" name="alcohol" id="alcohol" placeholder="9.4" required>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button type="submit" class="btn btn-primary">Predict Quality</button>
+                        <button type="reset" class="btn btn-secondary">Clear</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Info Section -->
+            <div class="info-section">
+                <div class="info-item">
+                    <span class="info-icon">📊</span>
+                    <div class="info-text">
+                        <h3>ML Model</h3>
+                        <p>ElasticNet Regression</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">🎯</span>
+                    <div class="info-text">
+                        <h3>Accuracy</h3>
+                        <p>Based on physicochemical tests</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <span class="info-icon">🍇</span>
+                    <div class="info-text">
+                        <h3>Dataset</h3>
+                        <p>Red wine quality data</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2025 Wine Quality Prediction | ML Project</p>
+        </footer>
+    </div>
+</body>
+</html>
