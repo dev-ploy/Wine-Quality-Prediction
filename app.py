@@ -7,7 +7,7 @@ import joblib
 app = Flask(__name__)
 
 # Load the model directly
-model = joblib.load('artifacts/model_trainer/model.pkl')
+model = joblib.load('artifacts/model_trainer/model.joblib')
 
 @app.route('/', methods=['GET'])
 def homePage():
