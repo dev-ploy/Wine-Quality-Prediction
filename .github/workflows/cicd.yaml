@@ -8,6 +8,8 @@ on:
       - 'README.md'
   workflow_dispatch:  # Allows manual trigger from GitHub Actions tab
 
+# CI/CD Pipeline: Build, Push to ECR, and Deploy
+
 permissions:
   id-token: write
   contents: read
