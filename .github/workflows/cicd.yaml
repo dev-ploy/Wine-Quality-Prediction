@@ -6,6 +6,7 @@ on:
       - main
     paths-ignore:
       - 'README.md'
+  workflow_dispatch:  # Allows manual trigger from GitHub Actions tab
 
 permissions:
   id-token: write
