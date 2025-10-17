@@ -33,12 +33,12 @@ RUN mkdir -p artifacts/data_ingestion \
     artifacts/model_evaluation
 
 # Expose port for Flask
-EXPOSE 80
+EXPOSE 8080
 
 # Set environment variables
 ENV PYTHONUNBUFFERED=1
 ENV FLASK_APP=app.py
-ENV PORT=80
+ENV PORT=8080
 
 # Run the application
 CMD ["python", "app.py"]
