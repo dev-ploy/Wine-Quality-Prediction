@@ -2,10 +2,6 @@
 
 A machine learning web application that predicts wine quality based on physicochemical properties using ElasticNet regression.
 
-## 🚀 Live Demo
-
-**Application URL:** http://13.233.90.140:8080
-
 ## 📋 Features
 
 - Real-time wine quality prediction (0-10 scale)
